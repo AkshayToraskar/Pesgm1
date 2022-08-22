@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ak.pesgm.R
 import com.ak.pesgm.model.Schedule
+import com.github.vipulasri.timelineview.TimelineView
 
 class ScheduleAdapter(
     private val scheduleList: MutableList<Schedule>,
@@ -18,13 +19,13 @@ class ScheduleAdapter(
         val tvDate: TextView
         val tvDay: TextView
         val tvMrInfo: TextView
-//        val tvEnInfo: TextView
+        val timelineView: TimelineView
 
         init {
             tvDate = view.findViewById(R.id.tv_date)
             tvDay = view.findViewById(R.id.tv_day)
             tvMrInfo = view.findViewById(R.id.tv_mr_info)
-//            tvEnInfo = view.findViewById(R.id.tv_en_info)
+            timelineView = view.findViewById(R.id.timeline)
         }
     }
 
@@ -32,7 +33,6 @@ class ScheduleAdapter(
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.schedule_item, viewGroup, false)
-
         return ViewHolder(view)
     }
 
@@ -40,7 +40,9 @@ class ScheduleAdapter(
         viewHolder.tvDay.text = scheduleList[position].day
         viewHolder.tvDate.text = scheduleList[position].date
         viewHolder.tvMrInfo.text = scheduleList[position].mr_info
-//        viewHolder.tvEnInfo.text = scheduleList[position].en_info
+
+        viewHolder.timelineView.initLine(position)
+
     }
 
     override fun getItemCount(): Int  {

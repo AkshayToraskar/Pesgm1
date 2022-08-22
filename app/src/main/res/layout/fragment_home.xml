@@ -15,7 +15,7 @@
         android:horizontalSpacing="10dp"
         android:verticalSpacing="10dp"
         android:clipToPadding="false"
-        android:paddingBottom="160dp"
+        android:paddingBottom="180dp"
         android:numColumns="2" />
 
 </FrameLayout>
