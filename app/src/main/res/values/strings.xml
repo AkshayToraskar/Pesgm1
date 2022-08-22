@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Pesgm</string>
+
+    <string name="fcm_message">fcm message</string>
+    <string name="default_notification_channel_id">notifc</string>
+    <string name="home">Home</string>
+    <string name="schedule">Schedule</string>
+    <string name="documents">Documents</string>
+    <string name="settings">Settings</string>
+
+    <string name="marathi">maraOI</string>
+    <string name="language">Language</string>
+    <string name="title">Patil Estate Sarvjanik Ganeshostav Mandal</string>
+</resources>

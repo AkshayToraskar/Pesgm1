@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">पाईसागम</string>
+    <string name="fcm_message">fcm message</string>
+    <string name="default_notification_channel_id">notifc</string>
+    <string name="home">होम</string>
+    <string name="schedule">वेळापत्रक</string>
+    <string name="documents">Documents</string>
+    <string name="settings">सेटिंग </string>
+
+    <string name="marathi">maraOI</string>
+    <string name="language">BaaVaa</string>
+    <string name="title">paaoIla qQsoeo saavaQjainak gaNaeSaaestava ma/DL</string>
+</resources>
