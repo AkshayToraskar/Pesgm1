@@ -21,6 +21,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     val TAG = "HomeFragment"
+//    lateinit var collectionItem: MutableList<Collection>
     var collectionAdapter: CollectionAdapter? = null
 
     override fun onCreateView(
@@ -56,6 +57,8 @@ class HomeFragment : Fragment() {
                     coll.mr_year=document.data.get("mr_year") as String?
                     collArray.add(coll)
                 }
+//                collectionItem.clear()
+//                collectionItem.addAll(collArray)
                 collectionAdapter?.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->

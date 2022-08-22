@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background"
-        tools:viewBindingIgnore="true"
-        tools:context=".fragment.ScheduleFragment"
-        tools:ignore="Overdraw">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    tools:context=".fragment.ScheduleFragment"
+    tools:ignore="Overdraw">
 
-    <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/logger"
-            android:text="@string/schedule"
-            android:textSize="50sp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_shedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+<!--    <com.github.vipulasri.timelineview.TimelineView-->
+<!--        android:id="@+id/timeline"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:markerSize="20dp"-->
+<!--        app:lineWidth="2dp"-->
+<!--        app:startLineColor="@color/colorAccent"-->
+<!--        app:endLineColor="@color/colorPrimaryDark"-->
+<!--        app:linePadding="5dp"/>-->
 
 </FrameLayout>

@@ -19,7 +19,7 @@ class SettingFragment : Fragment() {
     private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
     private lateinit var sessionManager: SessionManager
-    val TAG = "HomeFragment"
+    val TAG = "SettingFragment"
 
 
     override fun onCreateView(

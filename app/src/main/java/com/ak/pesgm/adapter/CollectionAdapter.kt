@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide
 
 
 class CollectionAdapter(
-    private val courseList: MutableList<Collection>,
+    private val collectionList: MutableList<Collection>,
     private val context: Context
 ) :
     BaseAdapter() {
@@ -24,7 +24,7 @@ class CollectionAdapter(
     private lateinit var iv_collection: ImageView
 
     override fun getCount(): Int {
-        return courseList.size
+        return collectionList.size
     }
 
     override fun getItem(position: Int): Any? {
@@ -58,10 +58,10 @@ class CollectionAdapter(
         }
 
         Glide.with(context)
-            .load(courseList.get(position).img_thumb)
+            .load(collectionList.get(position).img_thumb)
             .into(iv_collection);
 //        iv_collection.setImageURI(courseList.get(position).img_path)
-        tv_year.setText(courseList.get(position).en_year)
+        tv_year.setText(collectionList.get(position).en_year)
         return collectionView
     }
 }
