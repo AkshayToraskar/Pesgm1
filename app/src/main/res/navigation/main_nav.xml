@@ -6,17 +6,17 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.ak.pesgm.fragment.HomeFragment"
+        android:name="io.ak.pesgm.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/log"
-        android:name="com.ak.pesgm.fragment.ScheduleFragment"
+        android:name="io.ak.pesgm.fragment.ScheduleFragment"
         android:label="fragment_schedule"
         tools:layout="@layout/fragment_schedule" />
     <fragment
         android:id="@+id/setting"
-        android:name="com.ak.pesgm.fragment.SettingFragment"
+        android:name="io.ak.pesgm.fragment.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
 </navigation>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
-    tools:context=".fragment.SettingFragment"
+    tools:context="io.ak.pesgm.fragment.SettingFragment"
     tools:ignore="Overdraw">
 
 
