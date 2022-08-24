@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ak.pesgm.R
 import com.ak.pesgm.adapter.CollectionAdapter
 import com.ak.pesgm.databinding.FragmentHomeBinding
@@ -21,7 +23,6 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     val TAG = "HomeFragment"
-//    lateinit var collectionItem: MutableList<Collection>
     var collectionAdapter: CollectionAdapter? = null
 
     override fun onCreateView(
@@ -33,8 +34,10 @@ class HomeFragment : Fragment() {
         val view = binding.root
 
         var collectionItem = getCollection()
+        val gridLayoutManager = GridLayoutManager(activity,2)
+        binding.rvCollectionGallery.layoutManager = gridLayoutManager
         collectionAdapter = CollectionAdapter(collectionItem, view.context)
-        binding.collectionGallery.adapter = collectionAdapter
+        binding.rvCollectionGallery.adapter = collectionAdapter
 
         return view
     }
@@ -57,8 +60,6 @@ class HomeFragment : Fragment() {
                     coll.mr_year=document.data.get("mr_year") as String?
                     collArray.add(coll)
                 }
-//                collectionItem.clear()
-//                collectionItem.addAll(collArray)
                 collectionAdapter?.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->

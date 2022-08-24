@@ -8,8 +8,8 @@
         android:background="@color/background"
         tools:context=".fragment.HomeFragment">
 
-    <GridView
-        android:id="@+id/collection_gallery"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_collection_gallery"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:horizontalSpacing="10dp"

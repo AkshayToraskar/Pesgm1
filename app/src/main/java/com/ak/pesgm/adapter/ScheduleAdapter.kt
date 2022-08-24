@@ -31,20 +31,17 @@ class ScheduleAdapter(
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.schedule_item, viewGroup, false)
         return ViewHolder(view, viewType)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
         val timestamp = scheduleList[position].date
         val milliseconds = (timestamp?.seconds ?: 0) * 1000 + (timestamp?.nanoseconds ?: 0) / 1000000
         val sdf = SimpleDateFormat("dd/MM/yyyy")
         val netDate = Date(milliseconds)
         val date = sdf.format(netDate).toString()
-
         viewHolder.tvDate.text = date
         viewHolder.tvInfo.text = scheduleList[position].mr_info
     }

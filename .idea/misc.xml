@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../layout/custom_preview.xml" value="0.271875" />
+        <entry key="../../../../.gradle/caches/transforms-3/582a6eaa14844fd2ff0a6271db739305/transformed/timelineview-1.1.5/res/drawable/marker.xml" value="0.1835" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/asf.xml" value="0.2155" />
         <entry key="app/src/main/res/drawable/ic_arrow_right.xml" value="0.2155" />
         <entry key="app/src/main/res/drawable/ic_bar_chart.xml" value="0.201" />
@@ -11,6 +13,7 @@
         <entry key="app/src/main/res/drawable/ic_folder.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/ic_grid.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.201" />
+        <entry key="app/src/main/res/drawable/marker.xml" value="0.1825" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2453125" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.2453125" />
         <entry key="app/src/main/res/layout/collection_item.xml" value="0.10729166666666666" />
@@ -27,6 +30,7 @@
         <entry key="app/src/main/res/layout/schedule_item.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.2453125" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.123" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1965" />
       </map>
     </option>
   </component>

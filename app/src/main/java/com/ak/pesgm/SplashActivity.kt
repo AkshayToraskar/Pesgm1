@@ -39,6 +39,9 @@ class SplashActivity : AppCompatActivity() {
             setLocale("mr")
         } else if (sessionManager.language == "en") {
             setLocale("en")
+        }else{
+            sessionManager.language = "mr"
+            setLocale("mr")
         }
 
         Handler().postDelayed({
