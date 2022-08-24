@@ -1,4 +1,4 @@
-## Shake Alarm Clock: Privacy policy
+## PESGM: Privacy policy
 
 Welcome to the PESGM app for Android!
 
