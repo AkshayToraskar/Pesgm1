@@ -9,23 +9,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ak.pesgm.R
 import com.ak.pesgm.model.Schedule
 import com.github.vipulasri.timelineview.TimelineView
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ScheduleAdapter(
     private val scheduleList: MutableList<Schedule>,
     private val context: Context
 ) : RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, viewType: Int) : RecyclerView.ViewHolder(view) {
         val tvDate: TextView
-        val tvDay: TextView
-        val tvMrInfo: TextView
+        val tvInfo: TextView
         val timelineView: TimelineView
 
         init {
             tvDate = view.findViewById(R.id.tv_date)
-            tvDay = view.findViewById(R.id.tv_day)
-            tvMrInfo = view.findViewById(R.id.tv_mr_info)
+            tvInfo = view.findViewById(R.id.tv_info)
             timelineView = view.findViewById(R.id.timeline)
+            timelineView.initLine(viewType);
         }
     }
 
@@ -33,20 +34,27 @@ class ScheduleAdapter(
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.schedule_item, viewGroup, false)
-        return ViewHolder(view)
+        return ViewHolder(view, viewType)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.tvDay.text = scheduleList[position].day
-        viewHolder.tvDate.text = scheduleList[position].date
-        viewHolder.tvMrInfo.text = scheduleList[position].mr_info
 
-        viewHolder.timelineView.initLine(position)
+        val timestamp = scheduleList[position].date
+        val milliseconds = (timestamp?.seconds ?: 0) * 1000 + (timestamp?.nanoseconds ?: 0) / 1000000
+        val sdf = SimpleDateFormat("dd/MM/yyyy")
+        val netDate = Date(milliseconds)
+        val date = sdf.format(netDate).toString()
 
+        viewHolder.tvDate.text = date
+        viewHolder.tvInfo.text = scheduleList[position].mr_info
     }
 
     override fun getItemCount(): Int  {
         return scheduleList.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return TimelineView.getTimeLineViewType(position, itemCount)
     }
 
 }
