@@ -15,29 +15,32 @@
         android:resource="@color/colorAccent" />
 
     <application
+        android:name=".app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:name="io.ak.pesgm.app.App"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pesgm">
         <activity
-            android:name="io.ak.pesgm.SplashActivity"
+            android:name=".StoriesActivity"
+            android:theme="@style/Theme.NoActionbar"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="io.ak.pesgm.MainActivity"
-            android:exported="true">
-        </activity>
+            android:name=".MainActivity"
+            android:exported="true"></activity>
 
         <service
-            android:name="io.ak.pesgm.app.FirebaseService"
+            android:name=".app.FirebaseService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
