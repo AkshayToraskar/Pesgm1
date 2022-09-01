@@ -2,6 +2,7 @@ package io.ak.pesgm
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
@@ -16,15 +17,6 @@ import jp.shts.android.storiesprogressview.StoriesProgressView.StoriesListener
 
 class StoriesActivity : AppCompatActivity(), StoriesListener {
 
-    private val resources = arrayOf<String>(
-        "https://firebasestorage.googleapis.com/v0/b/pesgm-3a470.appspot.com/o/img_thumb%2Ffd1984.jpg?alt=media&token=0815777b-1b08-4774-839a-359ba7a1beae",
-        "https://firebasestorage.googleapis.com/v0/b/pesgm-3a470.appspot.com/o/img_thumb%2Ffd1985.jpg?alt=media&token=a03abdaf-d73a-4e4c-8c5b-db25427c8644",
-        "https://firebasestorage.googleapis.com/v0/b/pesgm-3a470.appspot.com/o/img_thumb%2Ffd1986.jpg?alt=media&token=45748b86-9aa9-46c1-b356-ad45fb0ee19d",
-        "https://firebasestorage.googleapis.com/v0/b/pesgm-3a470.appspot.com/o/img_thumb%2Ffd1984.jpg?alt=media&token=0815777b-1b08-4774-839a-359ba7a1beae",
-        "https://firebasestorage.googleapis.com/v0/b/pesgm-3a470.appspot.com/o/img_thumb%2Ffd1985.jpg?alt=media&token=a03abdaf-d73a-4e4c-8c5b-db25427c8644",
-        "https://firebasestorage.googleapis.com/v0/b/pesgm-3a470.appspot.com/o/img_thumb%2Ffd1986.jpg?alt=media&token=45748b86-9aa9-46c1-b356-ad45fb0ee19d"
-    )
-
     var pressTime = 0L
     var limit = 500L
 
@@ -33,7 +25,6 @@ class StoriesActivity : AppCompatActivity(), StoriesListener {
     private var image: ImageView? = null
     private var ivClose: ImageView? = null
     private var ivPlayPause: ImageView? = null
-    private var counter = 0
 
 
     private val onTouchListener = OnTouchListener { v, event ->
@@ -61,15 +52,19 @@ class StoriesActivity : AppCompatActivity(), StoriesListener {
         infoTextView = findViewById<View>(R.id.tv_info) as TextView?
         ivClose = findViewById<View>(R.id.iv_close) as ImageView?
         ivPlayPause = findViewById<View>(R.id.iv_play_pause) as ImageView?
+        image = findViewById<View>(R.id.image) as ImageView?;
 
-        storiesProgressView?.setStoriesCount(resources.size);
+
+        features_images = intent.getStringArrayListExtra("features_images") !!
+        counter = intent.getIntExtra("counter",0)
+
+        storiesProgressView?.setStoriesCount(features_images.size);
         storiesProgressView?.setStoryDuration(3000L);
         storiesProgressView?.setStoriesListener(this);
         storiesProgressView?.startStories(counter);
-        image = findViewById<View>(R.id.image) as ImageView?;
 
         Glide.with(this)
-            .load(resources[counter])
+            .load(features_images[counter])
             .into(image!!)
 //        image?.setImageResource();
 
@@ -118,7 +113,7 @@ class StoriesActivity : AppCompatActivity(), StoriesListener {
     override fun onNext() {
 //        image?.setImageResource(resources[++counter]);
         Glide.with(this)
-            .load(resources[++counter])
+            .load(features_images[++counter])
             .into(image!!)
     }
 
@@ -126,7 +121,7 @@ class StoriesActivity : AppCompatActivity(), StoriesListener {
         if ((counter - 1) < 0) return;
 //        image?.setImageResource(resources[--counter]);
         Glide.with(this)
-            .load(resources[--counter])
+            .load(features_images[--counter])
             .into(image!!)
     }
 
@@ -140,5 +135,10 @@ class StoriesActivity : AppCompatActivity(), StoriesListener {
         // Very important !
         storiesProgressView!!.destroy()
         super.onDestroy()
+    }
+
+    companion object {
+        var features_images = ArrayList<String>()
+        var counter = 0
     }
 }

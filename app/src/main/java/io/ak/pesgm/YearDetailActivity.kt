@@ -4,10 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
-import android.view.ScaleGestureDetector
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener
 import android.view.View
 import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +26,8 @@ class YearDetailActivity : AppCompatActivity(), RecyclerviewOnClickListener {
     val TAG = "Year Detail Activity"
     private lateinit var binding: ActivityYearDetailBinding
     lateinit var listener: RecyclerviewOnClickListener
+
+    var features_images = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,13 +52,13 @@ class YearDetailActivity : AppCompatActivity(), RecyclerviewOnClickListener {
         var en_info = intent.getStringExtra("en_info").toString()
         var mr_info = intent.getStringExtra("mr_info").toString()
         var img_path = intent.getStringExtra("img_path").toString()
-        var features_images = intent.getStringArrayListExtra("features_images")
-
+        if(intent.getStringArrayListExtra("features_images")!=null) {
+            features_images = intent.getStringArrayListExtra("features_images")!!
+        }
 
         Glide.with(applicationContext)
             .load(img_path)
             .into(binding.ivDetailPic)
-
 
 
         Glide.with(this)
@@ -124,14 +123,12 @@ class YearDetailActivity : AppCompatActivity(), RecyclerviewOnClickListener {
             }
         }
         )
-
-
-
     }
 
     override fun recyclerviewClick(position: Int) {
         val i = Intent(this, StoriesActivity::class.java)
-//        i.putStringArrayListExtra("features_images", collectionItem[position].features_images)
+        i.putStringArrayListExtra("features_images", features_images)
+        i.putExtra("counter",position)
         startActivity(i)
     }
 }
