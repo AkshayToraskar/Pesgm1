@@ -15,7 +15,6 @@ import io.ak.pesgm.utils.setUpStatusNavigationBarColors
 
 class MainActivity : AppCompatActivity() {
 
-    val TAG = "Main Activity"
     private lateinit var binding: ActivityMainBinding
     private lateinit var sessionManager: SessionManager
 

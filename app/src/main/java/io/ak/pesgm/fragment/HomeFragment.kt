@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import io.ak.pesgm.StoriesActivity
+import io.ak.pesgm.YearDetailActivity
 import io.ak.pesgm.adapter.CollectionAdapter
 import io.ak.pesgm.databinding.FragmentHomeBinding
 import io.ak.pesgm.interfaces.RecyclerviewOnClickListener
@@ -25,6 +26,7 @@ class HomeFragment : Fragment(), RecyclerviewOnClickListener {
     val TAG = "HomeFragment"
     var collectionAdapter: CollectionAdapter? = null
     lateinit var listener: RecyclerviewOnClickListener
+    private lateinit var collectionItem: MutableList<Collection>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +37,7 @@ class HomeFragment : Fragment(), RecyclerviewOnClickListener {
         val view = binding.root
         listener = this
 
-        var collectionItem = getCollection()
+        collectionItem = getCollection()
         val gridLayoutManager = GridLayoutManager(activity,2)
         binding.rvCollectionGallery.layoutManager = gridLayoutManager
         collectionAdapter = CollectionAdapter(listener, collectionItem, view.context)
@@ -54,6 +56,7 @@ class HomeFragment : Fragment(), RecyclerviewOnClickListener {
                 for (document in result) {
                     Log.d(TAG, "${document.id} => ${document.data}")
                     val coll = Collection()
+                    coll.doc_id= document.id
                     coll.en_info= document.data.get("en_info") as String?
                     coll.en_year=document.data.get("en_year") as String?
                     coll.img_path=document.data.get("img_path") as String?
@@ -77,8 +80,15 @@ class HomeFragment : Fragment(), RecyclerviewOnClickListener {
 
     override fun recyclerviewClick(position: Int) {
 //        Toast.makeText(context, "asdf$position", Toast.LENGTH_SHORT).show()
-
-        val i = Intent(activity, StoriesActivity::class.java)
+//        val i = Intent(activity, StoriesActivity::class.java)
+//        startActivity(i)
+        val i = Intent(activity, YearDetailActivity::class.java)
+        i.putExtra("doc_id",collectionItem[position].doc_id)
+        i.putExtra("en_year", collectionItem[position].en_year)
+        i.putExtra("en_info", collectionItem[position].en_info)
+        i.putExtra("mr_year", collectionItem[position].mr_year)
+        i.putExtra("mr_info", collectionItem[position].mr_info)
+        i.putExtra("img_path", collectionItem[position].img_path)
         startActivity(i)
     }
 }

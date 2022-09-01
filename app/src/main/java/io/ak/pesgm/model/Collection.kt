@@ -3,6 +3,7 @@ import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 class Collection {
+    var doc_id: String ? = null
     var mr_info: String? = null
     var en_info: String? = null
     var mr_year: String? = null

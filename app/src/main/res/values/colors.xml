@@ -12,7 +12,7 @@
     <color name="background">#ffffff</color>
     <color name="light_background">#f4f4f4</color>
     <color name="invert">#202020</color>
-    <color name="home">#e74c3c</color>
+    <color name="home">#DC776C</color>
     <color name="schedule">#673AB7</color>
     <color name="settings">#2ecc71</color>
 </resources>
