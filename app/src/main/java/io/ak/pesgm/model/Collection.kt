@@ -10,4 +10,5 @@ class Collection {
     var en_year: String? = null
     var img_path: String? = null
     var img_thumb: String? = null
+    var features_images: ArrayList<String>? = null
 }

@@ -35,8 +35,14 @@ class SplashActivity : AppCompatActivity() {
         sessionManager = SessionManager(this)
         if (sessionManager.language == "mr") {
             setLocale("mr")
+            binding.tvTitle.setTypeface(resources.getFont(R.font.amsmanthan))
+            binding.tvTitle.setTextSize(23f)
+            binding.tvTitle.setText(resources.getString(R.string.title))
         } else if (sessionManager.language == "en") {
             setLocale("en")
+            binding.tvTitle.setTypeface(resources.getFont(R.font.josefinsansregular))
+            binding.tvTitle.setTextSize(23f)
+            binding.tvTitle.setText(resources.getString(R.string.title))
         }else{
             sessionManager.language = "mr"
             setLocale("mr")

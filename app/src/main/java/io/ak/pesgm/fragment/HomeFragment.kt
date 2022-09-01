@@ -63,6 +63,7 @@ class HomeFragment : Fragment(), RecyclerviewOnClickListener {
                     coll.img_thumb=document.data.get("img_thumb") as String?
                     coll.mr_info=document.data.get("mr_info") as String?
                     coll.mr_year=document.data.get("mr_year") as String?
+                    coll.features_images = document.get("features_images") as ArrayList<String>?
                     collArray.add(coll)
                 }
                 collectionAdapter?.notifyDataSetChanged()
@@ -79,9 +80,6 @@ class HomeFragment : Fragment(), RecyclerviewOnClickListener {
     }
 
     override fun recyclerviewClick(position: Int) {
-//        Toast.makeText(context, "asdf$position", Toast.LENGTH_SHORT).show()
-//        val i = Intent(activity, StoriesActivity::class.java)
-//        startActivity(i)
         val i = Intent(activity, YearDetailActivity::class.java)
         i.putExtra("doc_id",collectionItem[position].doc_id)
         i.putExtra("en_year", collectionItem[position].en_year)
@@ -89,6 +87,7 @@ class HomeFragment : Fragment(), RecyclerviewOnClickListener {
         i.putExtra("mr_year", collectionItem[position].mr_year)
         i.putExtra("mr_info", collectionItem[position].mr_info)
         i.putExtra("img_path", collectionItem[position].img_path)
+        i.putStringArrayListExtra("features_images", collectionItem[position].features_images)
         startActivity(i)
     }
 }

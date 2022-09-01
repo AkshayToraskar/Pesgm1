@@ -79,7 +79,11 @@
                         android:id="@+id/tv_info"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="20dp"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
                         android:text="" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -87,6 +91,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cv_features_images"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="15dp"
