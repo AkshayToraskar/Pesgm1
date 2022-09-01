@@ -1,19 +1,28 @@
 package io.ak.pesgm
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
+import android.view.MotionEvent
+import android.view.ScaleGestureDetector
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener
 import android.view.View
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
-import io.ak.pesgm.adapter.CollectionAdapter
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import io.ak.pesgm.adapter.FeaturesImagesAdapter
 import io.ak.pesgm.app.SessionManager
 import io.ak.pesgm.databinding.ActivityYearDetailBinding
 import io.ak.pesgm.interfaces.RecyclerviewOnClickListener
 import io.ak.pesgm.utils.isDarkThemeOn
 import io.ak.pesgm.utils.setUpStatusNavigationBarColors
+
 
 class YearDetailActivity : AppCompatActivity(), RecyclerviewOnClickListener {
 
@@ -51,6 +60,19 @@ class YearDetailActivity : AppCompatActivity(), RecyclerviewOnClickListener {
             .load(img_path)
             .into(binding.ivDetailPic)
 
+
+
+        Glide.with(this)
+            .load(img_path)
+            .into(object : CustomTarget<Drawable?>() {
+                @SuppressLint("SetTextI18n")
+                override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable?>?) {
+                    binding.ivDetailPic.setImageDrawable(resource)
+                }
+                override fun onLoadCleared(@Nullable placeholder: Drawable?) = Unit
+            })
+
+
         if (sessionManager.language == "mr") {
             year = mr_year
             info = mr_info
@@ -74,6 +96,7 @@ class YearDetailActivity : AppCompatActivity(), RecyclerviewOnClickListener {
             var featuresImagesAdapter = FeaturesImagesAdapter(listener, features_images as ArrayList<String>, view.context)
             binding.rvFeaturesImages.adapter = featuresImagesAdapter
             binding.rvFeaturesImages.isNestedScrollingEnabled = false
+
         }
 
         binding.tvYear.text = year
@@ -82,6 +105,26 @@ class YearDetailActivity : AppCompatActivity(), RecyclerviewOnClickListener {
         binding.ivBack.setOnClickListener{
             finish()
         }
+
+        binding.ivDetailPic.setOnTouchListener(object : View.OnTouchListener {
+            @SuppressLint("ClickableViewAccessibility")
+            override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+                when (p1?.getAction()) {
+                    MotionEvent.ACTION_DOWN -> binding.csNestedView.setScrollingEnabled(false)
+                    MotionEvent.ACTION_MOVE -> {
+                        if (p1.getPointerCount() == 2) {
+                            binding.csNestedView.setScrollingEnabled(false)
+                        }else{
+                            binding.csNestedView.setScrollingEnabled(true)
+                        }
+                    }
+                    MotionEvent.ACTION_UP -> binding.csNestedView.setScrollingEnabled(true)
+                }
+                return true
+            }
+        }
+        )
+
 
 
     }
