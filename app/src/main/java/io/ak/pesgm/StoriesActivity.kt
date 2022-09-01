@@ -131,8 +131,8 @@ class StoriesActivity : AppCompatActivity(), StoriesListener {
     }
 
     override fun onComplete() {
-        val i = Intent(this@StoriesActivity, MainActivity::class.java)
-        startActivity(i)
+//        val i = Intent(this@StoriesActivity, MainActivity::class.java)
+//        startActivity(i)
         finish()
     }
 

@@ -1,5 +1,6 @@
 package io.ak.pesgm
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -65,13 +66,14 @@ class YearDetailActivity : AppCompatActivity(), RecyclerviewOnClickListener {
         }
 
         if(features_images==null){
-            binding.cvFeaturesImages.visibility = View.GONE
+//            binding.cvFeaturesImages.visibility = View.GONE
         }else{
-            binding.cvFeaturesImages.visibility = View.VISIBLE
-            val gridLayoutManager = GridLayoutManager(this,2)
+//            binding.cvFeaturesImages.visibility = View.VISIBLE
+            val gridLayoutManager = GridLayoutManager(this,3)
             binding.rvFeaturesImages.layoutManager = gridLayoutManager
             var featuresImagesAdapter = FeaturesImagesAdapter(listener, features_images as ArrayList<String>, view.context)
             binding.rvFeaturesImages.adapter = featuresImagesAdapter
+            binding.rvFeaturesImages.isNestedScrollingEnabled = false
         }
 
         binding.tvYear.text = year
@@ -85,6 +87,8 @@ class YearDetailActivity : AppCompatActivity(), RecyclerviewOnClickListener {
     }
 
     override fun recyclerviewClick(position: Int) {
-
+        val i = Intent(this, StoriesActivity::class.java)
+//        i.putStringArrayListExtra("features_images", collectionItem[position].features_images)
+        startActivity(i)
     }
 }
