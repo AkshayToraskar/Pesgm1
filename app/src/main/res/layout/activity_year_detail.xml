@@ -98,14 +98,13 @@
                 android:elevation="10dp"
                 android:layout_margin="10dp">
 
-                <GridLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_features_images"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:columnCount="2"
                     android:padding="10dp"
-                    android:rowCount="4">
-
-                </GridLayout>
+                    android:rowCount="4"/>
 
             </androidx.cardview.widget.CardView>
 

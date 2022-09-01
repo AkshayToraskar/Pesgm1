@@ -4,16 +4,21 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
+import io.ak.pesgm.adapter.CollectionAdapter
+import io.ak.pesgm.adapter.FeaturesImagesAdapter
 import io.ak.pesgm.app.SessionManager
 import io.ak.pesgm.databinding.ActivityYearDetailBinding
+import io.ak.pesgm.interfaces.RecyclerviewOnClickListener
 import io.ak.pesgm.utils.isDarkThemeOn
 import io.ak.pesgm.utils.setUpStatusNavigationBarColors
 
-class YearDetailActivity : AppCompatActivity() {
+class YearDetailActivity : AppCompatActivity(), RecyclerviewOnClickListener {
 
     val TAG = "Year Detail Activity"
     private lateinit var binding: ActivityYearDetailBinding
+    lateinit var listener: RecyclerviewOnClickListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +30,7 @@ class YearDetailActivity : AppCompatActivity() {
         binding = ActivityYearDetailBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        listener = this
 
         val sessionManager = SessionManager(this)
 
@@ -62,6 +68,10 @@ class YearDetailActivity : AppCompatActivity() {
             binding.cvFeaturesImages.visibility = View.GONE
         }else{
             binding.cvFeaturesImages.visibility = View.VISIBLE
+            val gridLayoutManager = GridLayoutManager(this,2)
+            binding.rvFeaturesImages.layoutManager = gridLayoutManager
+            var featuresImagesAdapter = FeaturesImagesAdapter(listener, features_images as ArrayList<String>, view.context)
+            binding.rvFeaturesImages.adapter = featuresImagesAdapter
         }
 
         binding.tvYear.text = year
@@ -70,5 +80,11 @@ class YearDetailActivity : AppCompatActivity() {
         binding.ivBack.setOnClickListener{
             finish()
         }
+
+
+    }
+
+    override fun recyclerviewClick(position: Int) {
+
     }
 }

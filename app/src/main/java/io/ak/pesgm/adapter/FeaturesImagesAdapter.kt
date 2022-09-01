@@ -16,42 +16,30 @@ import io.ak.pesgm.model.Collection
 import io.ak.pesgm.utils.BottomSheetDialog
 
 
-class CollectionAdapter(
+class FeaturesImagesAdapter(
     private val listener: RecyclerviewOnClickListener,
-    private val collectionList: MutableList<Collection>,
+    private val featuresImageList: ArrayList<String>,
     private val context: Context
-) : RecyclerView.Adapter<CollectionAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<FeaturesImagesAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvYear: TextView
         val ivCollection: ImageView
 
         init {
-            tvYear = view.findViewById(R.id.tv_year)
             ivCollection = view.findViewById(R.id.iv_collection)
         }
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.collection_item, viewGroup, false)
+            .inflate(R.layout.features_image_item, viewGroup, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-        val sessionManager = SessionManager(context)
-        var year: String = "0"
-        if (sessionManager.language == "mr") {
-            year = collectionList.get(position).mr_year.toString()
-        } else if (sessionManager.language == "en") {
-            year = collectionList.get(position).en_year.toString()
-        }
-
-        viewHolder.tvYear.text = year
-
         Glide.with(context)
-            .load(collectionList.get(position).img_thumb)
+            .load(featuresImageList.get(position))
             .into(viewHolder.ivCollection)
 
         viewHolder.itemView.setOnClickListener{
@@ -60,6 +48,6 @@ class CollectionAdapter(
     }
 
     override fun getItemCount(): Int  {
-        return collectionList.size
+        return featuresImageList.size
     }
 }
