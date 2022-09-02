@@ -5,13 +5,10 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import io.ak.pesgm.R
-
 import io.ak.pesgm.app.SessionManager
 import io.ak.pesgm.databinding.ActivitySplashBinding
 import io.ak.pesgm.utils.isDarkThemeOn
 import io.ak.pesgm.utils.setUpStatusNavigationBarColors
-
 import java.util.*
 
 
@@ -31,6 +28,8 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        binding.tvAppVersion.text = "V " + BuildConfig.VERSION_NAME
 
         sessionManager = SessionManager(this)
         if (sessionManager.language == "mr") {

@@ -44,7 +44,7 @@
             android:text="made with \u2764 for bappa" />
 
         <TextView
-            android:id="@+id/appversion"
+            android:id="@+id/tv_app_version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
