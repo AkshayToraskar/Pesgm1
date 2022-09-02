@@ -1,8 +1,11 @@
 package io.ak.pesgm
 
 import android.annotation.SuppressLint
+import android.app.DownloadManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.text.Html
 import android.view.MotionEvent
@@ -101,6 +104,14 @@ class YearDetailActivity : AppCompatActivity(), RecyclerviewOnClickListener {
 
         binding.ivBack.setOnClickListener{
             finish()
+        }
+
+        binding.ivDownload.setOnClickListener{
+            val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+            val uri: Uri = Uri.parse(img_path)
+            val request = DownloadManager.Request(uri)
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+            val reference = downloadManager.enqueue(request)
         }
 
         binding.ivDetailPic.setOnTouchListener(object : View.OnTouchListener {

@@ -1,6 +1,8 @@
 package io.ak.pesgm.fragment
 
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -57,6 +59,15 @@ class SettingFragment : Fragment() {
             }
         })
 
+        binding.ivInsta.setOnClickListener{
+            getInstagramIntent()
+        }
+
+        binding.ivFacebook.setOnClickListener{
+            val fbIntent = getFacebookIntent()
+            startActivity(fbIntent)
+        }
+
         return view
     }
 
@@ -75,5 +86,27 @@ class SettingFragment : Fragment() {
         val refresh = Intent(activity, MainActivity::class.java)
         refresh.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(refresh)
+    }
+
+    fun getFacebookIntent(): Intent? {
+        val fburl = "https://www.facebook.com/PESGMANDAL/"
+        val pm = requireActivity().packageManager
+        var uri = Uri.parse(fburl)
+        try {
+            val applicationInfo = pm.getApplicationInfo("com.facebook.katana", 0)
+            if (applicationInfo.enabled) {
+                uri = Uri.parse("fb://facewebmodal/f?href=$fburl")
+            }
+        } catch (ignored: PackageManager.NameNotFoundException) {
+        }
+        return Intent(Intent.ACTION_VIEW, uri)
+    }
+
+    fun getInstagramIntent() {
+        val instaurl = "https://www.instagram.com/pesgm/"
+        val uri = Uri.parse(instaurl)
+        val likeIng = Intent(Intent.ACTION_VIEW, uri)
+        likeIng.setPackage("com.instagram.android")
+        startActivity(likeIng)
     }
 }
