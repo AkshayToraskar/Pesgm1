@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.text.Html
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.Nullable
@@ -96,7 +97,7 @@ class YearDetailActivity : AppCompatActivity(), RecyclerviewOnClickListener {
         }
 
         binding.tvYear.text = year
-        binding.tvInfo.text = info
+        binding.tvInfo.text = Html.fromHtml(info)
 
         binding.ivBack.setOnClickListener{
             finish()

@@ -30,6 +30,6 @@ public class SessionManager {
     }
 
     public String getLanguage() {
-        return pref.getString(LANGUAGE, "en");
+        return pref.getString(LANGUAGE, "mr");
     }
 }
