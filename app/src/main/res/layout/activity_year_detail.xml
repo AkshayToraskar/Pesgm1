@@ -34,7 +34,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="500dp"
                         android:background="#FF424242"
-                        android:src="@drawable/ic_clock" />
+                        android:src="@drawable/ic_baseline_downloading_24" />
 
                     <ImageView
                         android:id="@+id/iv_back"

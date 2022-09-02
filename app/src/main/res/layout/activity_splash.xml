@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:layout_alignParentBottom="true"
             android:textColor="@color/footer"
             android:text="made with \u2764 for bappa" />
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:layout_alignParentBottom="true"
             android:textColor="@color/footer"
             android:text="V 1.0.0" />

@@ -56,13 +56,10 @@ class YearDetailActivity : AppCompatActivity(), RecyclerviewOnClickListener {
             features_images = intent.getStringArrayListExtra("features_images")!!
         }
 
-        Glide.with(applicationContext)
-            .load(img_path)
-            .into(binding.ivDetailPic)
-
 
         Glide.with(this)
             .load(img_path)
+            .placeholder(R.drawable.progress_animation)
             .into(object : CustomTarget<Drawable?>() {
                 @SuppressLint("SetTextI18n")
                 override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable?>?) {
